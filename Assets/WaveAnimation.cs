@@ -10,7 +10,7 @@ public class WaveAnimation : MonoBehaviour
     void Start()
     {
         _buffer = new GraphicsBuffer
-          (GraphicsBuffer.Target.Structured, 64 * 64, 4 * sizeof(float));
+          (GraphicsBuffer.Target.Structured, 128 * 128, 4 * sizeof(float));
         GetComponent<VisualEffect>().SetGraphicsBuffer("PointBuffer", _buffer);
     }
 
@@ -24,6 +24,6 @@ public class WaveAnimation : MonoBehaviour
     {
         _compute.SetFloat("Time", Time.time);
         _compute.SetBuffer(0, "PointBuffer", _buffer);
-        _compute.Dispatch(0, 8, 8, 1);
+        _compute.Dispatch(0, 16, 16, 1);
     }
 }
