@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 424
     y: -283
     width: 1516
-    height: 1585
+    height: 1604
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,7 +379,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 16384
+      m_SerializableObject: 262144
     m_Space: -1
   m_Property:
     name: Count
@@ -921,7 +921,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614626}
   - {fileID: 8926484042661614650}
   dataType: 0
-  capacity: 16384
+  capacity: 262144
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
