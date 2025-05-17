@@ -7,6 +7,7 @@ using yutokun;
 using CSVEntry = System.Collections.Generic.List<string>;
 using CSVTable = System.Collections.Generic.List<System.Collections.Generic.List<string>>;
 
+
 public class WaveAnimation : MonoBehaviour
 {
     [SerializeField] ComputeShader _compute = null;
@@ -22,8 +23,38 @@ public class WaveAnimation : MonoBehaviour
 
     public Text Frame;
     
+    void CreateInitialSpheres()
+    {
+        Vector3[] centers = new Vector3[]
+        {
+            new Vector3(0.55f, 0.39f, 0.52f),
+            new Vector3(0.50f, 0.60f, 0.43f),
+            new Vector3(0.62f, 0.64f, 0.37f)
+    	};
+
+    	float[] radii = new float[]
+    	{
+            0.15f, 0.18f, 0.11f
+        };
+
+        for (int i = 0; i < centers.Length; i++)
+    	{
+            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+       	    //Material mat = new Material(Shader.Find("Standard"));
+	    //mat.color = Color.white;
+	    //sphere.GetComponent<Renderer>().material = mat;
+
+            sphere.transform.position = centers[i]; 
+            sphere.transform.localScale = Vector3.one * radii[i] *2; 
+            sphere.GetComponent<Renderer>().material.color = Color.yellow;
+    	}
+    }
+
     void Start()
     {
+	// CreateInitialSpheres();
+	
         _buffer = new GraphicsBuffer
           (GraphicsBuffer.Target.Structured, 512*512, 4 * sizeof(float));
         GetComponent<VisualEffect>().SetGraphicsBuffer("PointBuffer", _buffer);
