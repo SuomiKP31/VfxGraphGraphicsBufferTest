@@ -7,10 +7,10 @@ using yutokun;
 using CSVEntry = System.Collections.Generic.List<string>;
 using CSVTable = System.Collections.Generic.List<System.Collections.Generic.List<string>>;
 
-
-public class WaveAnimation : MonoBehaviour
+public class FanAnimation : MonoBehaviour
 {
     [SerializeField] ComputeShader _compute = null;
+    [SerializeField] private GameObject fan;
 
     GraphicsBuffer _buffer;
     private GraphicsBuffer _sBuffer;
@@ -20,6 +20,9 @@ public class WaveAnimation : MonoBehaviour
     private List<CSVTable> _allSteps;
 
     private int _curTimeStep = 0;
+    
+    private float _currentRotation = 0f;
+
 
     public Text Frame;
 
@@ -93,7 +96,12 @@ public class WaveAnimation : MonoBehaviour
             Frame.text = $"{_curTimeStep}";
         }
         
-        
+        // Rotate the fan
+        // TODO: Read rotation from CSV
+        _currentRotation += 2f;
+        var rotation = fan.transform.rotation;
+        rotation = Quaternion.Euler(_currentRotation, rotation.y, rotation.z);
+        fan.transform.rotation = rotation;
     }
 
     float GetHue(int idx)
